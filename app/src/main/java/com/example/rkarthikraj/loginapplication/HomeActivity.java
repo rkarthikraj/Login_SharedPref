@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        name = (EditText) findViewById(R.id.name);
+        name = (EditText) findViewById(R.id.inputPlace);
         usernameTV = (TextView) findViewById(R.id.usernameTV);
 
         SharedPreferences sharedpref = getSharedPreferences("userinfo", Context.MODE_PRIVATE);

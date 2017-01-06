@@ -25,7 +25,6 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
     EditText uname, pwd;
-    TextView message;
     String Uname, Pwd;
 
     @Override
@@ -35,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         uname = (EditText) findViewById(R.id.uname);
         pwd = (EditText) findViewById(R.id.pwd);
-        message=(TextView) findViewById(R.id.message);
 
         //Checking Shared Pref whether the user logs in
 
@@ -114,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
             String out = "false";
             try {
                 json = new JSONObject(result);
-                message.setText(json.getString("output"));
                 out = json.getString("output");
             }
             catch(JSONException e){
