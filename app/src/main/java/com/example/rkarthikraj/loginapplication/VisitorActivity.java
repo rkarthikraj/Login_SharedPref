@@ -1,13 +1,14 @@
 package com.example.rkarthikraj.loginapplication;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -20,53 +21,40 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class SignUpActivity extends AppCompatActivity {
-    EditText name, uname, pwd, email;
-    String Name, Uname, Pwd, Email;
+public class VisitorActivity extends AppCompatActivity {
+
+    TextView outputPlace;
+    List<String> list = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        name = (EditText) findViewById(R.id.name);
-        uname = (EditText) findViewById(R.id.uname);
-        pwd = (EditText) findViewById(R.id.pwd);
-        email = (EditText) findViewById(R.id.email);
-    }
-    public void onClickLogin(View v){
-        /*name.setText("");
-        uname.setText("");
-        pwd.setText("");
-        email.setText("");*/
+        setContentView(R.layout.activity_visitor);
 
-        Intent i=new Intent(this,LoginActivity.class);
-        startActivity(i);
+        outputPlace=(TextView)findViewById(R.id.outputPlace);
+
+        AsyncTaskDB runnerVisitor = new AsyncTaskDB();
+        runnerVisitor.execute("selplace");
+
     }
-    public void onClickSignUp(View v){
-        Name = name.getText().toString();
-        Uname = uname.getText().toString();
-        Pwd = pwd.getText().toString();
-        Email = email.getText().toString();
-        AsyncTaskDB runnerINS = new AsyncTaskDB();
-        runnerINS.execute("", Name, Uname, Pwd, Email, "signup");
+    public void onClickLoginPage(View v){
+        Intent logpage=new Intent(this,LoginActivity.class);
+        startActivity(logpage);
+        finish();
     }
 
-    //ASYNC TASK
-
+    //ASYNC
     class AsyncTaskDB extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
-            String ID = params[0];
-            String NAME = params[1];
-            String UsNAME = params[2];
-            String PWD = params[3];
-            String EMAIL = params[4];
-            String TYPE = params[5];
+            String TYPE = params[0];
             int tmp;
 
             try {
                 String data="";
-                URL url = new URL("http://192.168.1.213/login.php/?id=" + ID + "&name=" + NAME + "&uname=" + UsNAME + "&pwd=" + PWD + "&email=" + EMAIL + "&type=" + TYPE);
+                URL url = new URL("http://192.168.1.213/login.php/?type=" + TYPE);
                 HttpURLConnection httpURLConnection= (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
                 OutputStream os = httpURLConnection.getOutputStream();
@@ -89,8 +77,20 @@ public class SignUpActivity extends AppCompatActivity {
             }
         }
         protected void onPostExecute(String result) {
-            Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_LONG).show();
+            Toast.makeText(VisitorActivity.this, "Viewing Places", Toast.LENGTH_LONG).show();
+            String jsonplace;
+            try {
+                JSONArray jsonarray = new JSONArray(result);
+                for (int i = 0; i < jsonarray.length(); i++) {
+                    JSONObject jsonObject = jsonarray.getJSONObject(i);
+                    jsonplace=jsonObject.getString("name").toString();
+                    list.add(jsonplace);
+
+                }
+                outputPlace.setText(list.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
-
 }

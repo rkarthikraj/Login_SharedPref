@@ -100,4 +100,15 @@
         android:layout_below="@+id/uname"
         android:layout_alignStart="@+id/uname" />
 
+    <TextView
+        android:text="Visitor Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignEnd="@+id/resetBT"
+        android:id="@+id/visitorTV"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:onClick="onClickVisitor" />
+
 </RelativeLayout>

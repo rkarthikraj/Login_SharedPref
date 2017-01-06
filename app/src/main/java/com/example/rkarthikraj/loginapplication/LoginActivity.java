@@ -63,6 +63,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent i=new Intent(this,SignUpActivity.class);
         startActivity(i);
     }
+    public void onClickVisitor(View v){
+        Intent vis=new Intent(this,VisitorActivity.class);
+        startActivity(vis);
+    }
     public void onClickLogin(View v){
         Uname = uname.getText().toString();
         Pwd = pwd.getText().toString();

@@ -47,14 +47,20 @@ $name=$_GET['name'];
 $con=@mysql_connect("localhost","root","") or die("server error");
 $db=mysql_select_db("LOGIN_DB",$con) or die("database error");
 $query=mysql_query("insert into PLACE values('','$name')");
-$result1=@mysql_query("select * from PLACE");
-echo "<table border='2'>";
-while($row=mysql_fetch_array($result1))
-{
-echo "<tr>";
-echo "<td>",$row['ID'],"</td><td>",$row['NAME'],"</td>";
-echo "</tr>";
 }
-echo "</table>";
+else if($_GET['type']=="selplace")
+{
+$con=@mysql_connect("localhost","root","") or die("server error");
+$db=mysql_select_db("LOGIN_DB",$con) or die("database error");
+$result=@mysql_query("select * from PLACE");
+$result1 = array();
+while($row = mysql_fetch_array($result))
+	{
+		array_push($result1,array(
+			'id'=>$row['ID'],
+			'name'=>$row['NAME'],
+		));
+	}
+echo json_encode($result1);
 }
 ?>
