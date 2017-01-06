@@ -20,16 +20,51 @@
         android:textStyle="normal|bold"
         android:textAlignment="center" />
 
+    <Button
+        android:text="Sign In"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginBT"
+        android:onClick="onClickLogin"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/pwd"
+        android:layout_alignStart="@+id/pwd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginTop="26dp"
+        android:id="@+id/pwd"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:layout_below="@+id/uname"
+        android:layout_alignStart="@+id/uname" />
+
+    <TextView
+        android:text="Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textStyle="normal|bold"
+        android:layout_alignBaseline="@+id/pwd"
+        android:layout_alignBottom="@+id/pwd"
+        android:layout_alignEnd="@+id/textView2" />
+
     <TextView
         android:text="Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="68dp"
         android:id="@+id/textView2"
         android:textStyle="normal|bold"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="21dp" />
+        android:layout_marginStart="33dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,74 +76,43 @@
         android:textAlignment="center"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="21dp" />
-
-    <TextView
-        android:text="Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/pwd"
-        android:layout_alignStart="@+id/textView2"
-        android:id="@+id/textView3"
-        android:textStyle="normal|bold" />
-
-    <Button
-        android:text="Sign In"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/loginBT"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/pwd"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClickLogin"
-        android:textAlignment="center"
-        android:textStyle="normal|bold" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="RESET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/loginBT"
-        android:layout_alignEnd="@+id/pwd"
         android:id="@+id/resetBT"
         android:textStyle="normal|bold"
-        android:onClick="onClickReset" />
-
-    <TextView
-        android:text="Signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:onClick="onClickReset"
         android:layout_below="@+id/loginBT"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp"
-        android:id="@+id/textView4"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:onClick="onClickSignup" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="28dp"
-        android:id="@+id/pwd"
-        android:textSize="14sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_below="@+id/uname"
-        android:layout_alignStart="@+id/uname" />
+        android:layout_alignStart="@+id/loginBT"
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:text="Visitor Page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_alignEnd="@+id/resetBT"
         android:id="@+id/visitorTV"
         android:textStyle="normal|bold"
         android:textAlignment="center"
-        android:onClick="onClickVisitor" />
+        android:onClick="onClickVisitor"
+        android:layout_alignBaseline="@+id/resetBT"
+        android:layout_alignBottom="@+id/resetBT"
+        android:layout_alignEnd="@+id/textView3"
+        android:textColor="@android:color/holo_blue_bright" />
+
+    <TextView
+        android:text="Signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:onClick="onClickSignup"
+        android:layout_alignBaseline="@+id/loginBT"
+        android:layout_alignBottom="@+id/loginBT"
+        android:layout_alignStart="@+id/textView3"
+        android:textColor="@android:color/holo_orange_dark" />
 
 </RelativeLayout>

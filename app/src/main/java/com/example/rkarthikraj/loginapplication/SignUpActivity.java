@@ -34,13 +34,9 @@ public class SignUpActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
     }
     public void onClickLogin(View v){
-        /*name.setText("");
-        uname.setText("");
-        pwd.setText("");
-        email.setText("");*/
-
         Intent i=new Intent(this,LoginActivity.class);
         startActivity(i);
+        finish();
     }
     public void onClickSignUp(View v){
         Name = name.getText().toString();
@@ -90,6 +86,9 @@ public class SignUpActivity extends AppCompatActivity {
         }
         protected void onPostExecute(String result) {
             Toast.makeText(SignUpActivity.this, "Registered", Toast.LENGTH_LONG).show();
+            Intent i=new Intent(getBaseContext(), LoginActivity.class);
+            startActivity(i);
+            finish();
         }
     }
 
